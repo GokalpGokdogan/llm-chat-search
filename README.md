@@ -4,7 +4,7 @@ A VS Code and Cursor extension that searches the chat history of your AI coding 
 
 Your chats sit in different folders and formats. This extension reads them, builds a local index, and gives you one search box in the sidebar.
 
-<!-- TODO (owner): add a screenshot or short GIF of the sidebar here, for example images/screenshot.png -->
+![Searching for "docker port" and reading the matching chat in the sidebar. The chats shown are made-up sample data.](images/screenshot.png)
 
 ## Features
 
