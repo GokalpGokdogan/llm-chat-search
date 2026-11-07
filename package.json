@@ -1,0 +1,134 @@
+{
+  "name": "llm-chat-search-extension",
+  "displayName": "LLM Chat Search",
+  "version": "1.0.0",
+  "description": "Search all your LLM chat history across Cursor, Continue.dev, Windsurf, and Aider \u2014 directly inside VS Code.",
+  "publisher": "llm-chat-search",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/llm-chat-search-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "llm",
+    "chat",
+    "search",
+    "cursor",
+    "continue",
+    "windsurf",
+    "aider",
+    "history",
+    "ai"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "type": "commonjs",
+  "scripts": {
+    "compile": "esbuild ./src/extension.ts --bundle --outdir=dist --platform=node --external:vscode --external:better-sqlite3 --format=cjs",
+    "vscode:prepublish": "npm run compile",
+    "watch": "npm run compile -- --watch",
+    "test": "jest",
+    "lint": "eslint src tests",
+    "check": "tsc --noEmit",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.57.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.19.39",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^8.72.1"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "fuse.js": "^7.3.0",
+    "glob": "^9.3.5"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "llmChatSearch",
+          "title": "LLM Chat Search",
+          "icon": "images/activity-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "llmChatSearch": [
+        {
+          "type": "webview",
+          "id": "llmChatSearch.sidebar",
+          "name": "LLM Chat Search",
+          "icon": "images/activity-icon.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "llm-chat-search.search",
+        "title": "Search LLM Chats\u2026",
+        "category": "LLM Chat Search"
+      },
+      {
+        "command": "llm-chat-search.reindex",
+        "title": "Re-index All Sources",
+        "category": "LLM Chat Search"
+      }
+    ],
+    "configuration": {
+      "title": "LLM Chat Search",
+      "properties": {
+        "llmChatSearch.extraPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional directories to scan for LLM chat logs (supports ~ for home directory)"
+        },
+        "llmChatSearch.maxResults": {
+          "type": "number",
+          "default": 20,
+          "minimum": 5,
+          "maximum": 100,
+          "description": "Maximum number of search results to display"
+        },
+        "llmChatSearch.semanticSearch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable semantic (embedding-based) search in addition to keyword search (experimental)"
+        },
+        "llmChatSearch.autoReindex": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically re-index chat logs when the extension activates"
+        },
+        "llmChatSearch.openAiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API key for embedding-based semantic search (used only if Ollama is unavailable)"
+        }
+      }
+    }
+  }
+}

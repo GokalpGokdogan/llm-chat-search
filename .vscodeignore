@@ -1,0 +1,23 @@
+.vscode/**
+.vscode-test/**
+.github/**
+.claude/**
+src/**
+tests/**
+coverage/**
+files (1)/**
+dist/**
+!dist/extension.js
+**/*.map
+**/*.ts
+*.vsix
+*.ipynb
+.gitignore
+.DS_Store
+eslint.config.js
+jest.config.js
+tsconfig*.json
+node_modules/**
+!node_modules/better-sqlite3/**
+!node_modules/bindings/**
+!node_modules/file-uri-to-path/**
