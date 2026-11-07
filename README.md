@@ -20,8 +20,8 @@ Your chats sit in different folders and formats. This extension reads them, buil
 Requires VS Code 1.85 or newer (or a Cursor version based on it) and Node.js 22 (the version used in CI).
 
 ```bash
-git clone <repository-url>
-cd llm-chat-search-extension
+git clone https://github.com/GokalpGokdogan/llm-chat-search.git
+cd llm-chat-search
 npm ci
 npm run package
 ```

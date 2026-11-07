@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/llm-chat-search-extension"
+    "url": "https://github.com/GokalpGokdogan/llm-chat-search"
   },
   "engines": {
     "vscode": "^1.85.0"
